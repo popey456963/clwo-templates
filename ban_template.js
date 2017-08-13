@@ -117,20 +117,20 @@ $(function() {
         data = survey[i];
         container = jQuery('.mm-survey-container');
         content = '<div class="mm-survey-page mm-survey-page-' + i + '" data-page="' + i + '">' +
-            '<div class="mm-survery-content">' +
+            '<div class="mm-survey-content">' +
             '<div class="mm-survey-question"><p>' + data.question + '</p></div>' +
             '</div>' +
             '</div>';
         container.append(content);
 
         if (Object.keys(data.answer).length < 1) {
-            jQuery('.mm-survey-page-' + i + ' .mm-survery-content').append('<p>Please press "submit".</p>');
+            jQuery('.mm-survey-page-' + i + ' .mm-survey-content').append('<p>Please press "submit".</p>');
         } else {
             for (var ii = 1; ii <= Object.keys(data.answer).length; ii++) {
 
                 var datax, containerx, contentx;
                 datax = data.answer[ii];
-                containerx = jQuery('.mm-survey-page-' + i + ' .mm-survery-content');
+                containerx = jQuery('.mm-survey-page-' + i + ' .mm-survey-content');
 
                 switch (datax.type) {
                     case 'radio':
@@ -435,7 +435,7 @@ $(function() {
     }
 
     function checkStatus() {
-        jQuery('.mm-survery-content .mm-survey-item').on('click', function() {
+        jQuery('.mm-survey-content .mm-survey-item').on('click', function() {
             var item;
             item = jQuery(this);
             item.closest('.mm-survey-page').addClass('pass');
@@ -443,7 +443,7 @@ $(function() {
     }
 
     function buildStatus() {
-        jQuery('.mm-survery-content .mm-survey-item').on('click', function() {
+        jQuery('.mm-survey-content .mm-survey-item').on('click', function() {
             var item;
             item = jQuery(this);
             item.addClass('bingo');
