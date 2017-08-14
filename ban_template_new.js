@@ -96,6 +96,14 @@ let survey = {
       placeholder: 'e.g. video of incident www.youtube.com/watch?v=example'
     }]
   },
+  49: {
+    question: 'What is your in game name?',
+    answers: [{
+      type: 'text',
+      route: 52,
+      placeholder: 'e.g. Jack'
+    }]
+  },
   50: {
     question: 'How have you been banned?',
     answers: [{
@@ -108,7 +116,7 @@ let survey = {
       item: 'Blacklisted from community'
     }, {
       type: 'radio',
-      route: 52,
+      route: 49,
       item: 'Teambanned from CT'
     }, {
       type: 'radio',
@@ -120,7 +128,7 @@ let survey = {
     question: 'How long is your teamlock?',
     answers: [{
       type: 'text',
-      route: 52,
+      route: 49,
       placeholder: 'e.g. 100'
     }]
   },
@@ -339,7 +347,15 @@ function unban_player(data) {
     post(`<p>Set the title to be: ${title}`)
     post(`<p class='text'>${text}</p>`)
   } else if (['Teambanned from CT', 'Teamlocked from CT'].includes(data[50])) {
-    
+    let forum = 7
+    let title = `${ data[50] == 'Teamlocked from CT' ? 'Unteamlock' : 'Unteamban'} Request for ${data[49]}`
+    let text = `
+${ data[50] == 'Teamlocked from CT' ? `[b]Time of Teamlock:[/b] ${data[51]}\n` : ``}[b]Reason for Unban:[/b] ${data[52]}
+[b]Screenshot:[/b] ${data[53]}
+`.split(/\r?\n/).join('<br />')
+    post(`<h1>Post the following in the <a href='https://clwo.eu/forum-${forum}.html'>${forums[forum]}</a>:</h1>`)
+    post(`<p>Set the title to be: ${title}`)
+    post(`<p class='text'>${text}</p>`)
   }
 }
 
