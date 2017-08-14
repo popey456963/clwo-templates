@@ -6,6 +6,10 @@ a {
 	color: #039be5 !important;
 }
 
+.prev {
+	float: left;
+}
+
 .survey {
 	font-family: 'Raleway';
 	font-weight: 300;
