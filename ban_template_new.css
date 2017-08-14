@@ -2,6 +2,10 @@ body {
 	background: none !important;
 }
 
+a {
+	color: #039be5 !important;
+}
+
 .survey {
 	font-family: 'Raleway';
 	font-weight: 300;
