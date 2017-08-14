@@ -10,7 +10,7 @@ body {
 
 .questions-container, .results-container {
 	width: 100%;
-	min-height: 420px;
+	min-height: 400px;
 }
 
 .questions-controller, .results-controller {
