@@ -140,17 +140,17 @@ body {
 
 .mm-survey-question p {
 	font-size: 22px;
-    font-weight: 300;
-    margin-bottom: 20px;
-    line-height: 40px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  line-height: 40px;
 }
 
 .mm-survey-content label p {
 	display: inline-block;
-    position: relative;
-    top: 2px;
-    left: 5px;
-    margin: 0px;
+  position: relative;
+  top: 2px;
+  left: 5px;
+  margin: 0px;
 }
 
 .mm-dynamic-input input, .mm-dynamic-form input, .mm-dynamic-datetime input {
@@ -171,9 +171,9 @@ input[type="radio"] {
 
 input[type="radio"] + label {
 	color: #292321;
-    font-family: 'Raleway';
-    font-weight: 300;
-    font-size: 16px;
+  font-family: 'Raleway';
+  font-weight: 300;
+  font-size: 16px;
 }
 
 input[type="radio"] + label span {
@@ -212,7 +212,7 @@ input[type="radio"]:checked + label span {
 	/*background: #fff;*/
 	margin-bottom: 15px;
 	border-bottom: 1px solid rgba(33,33,33,0.15);
-    border-radius: 0px 0px 4px 4px;
+  border-radius: 0px 0px 4px 4px;
 }
 
 .mm-prev-btn button:focus, .mm-next-btn button:focus, .mm-finish-btn button:focus {

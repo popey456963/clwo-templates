@@ -1,5 +1,11 @@
 $(function() {
-    var final = [7]
+    var final = [8]
+
+    var forums = {
+      '[Jailbreak] Staff Infractions & Complaints': 'https://clwo.eu/forum-14.html',
+      '[Jailbreak] (un)ban/teamunban/teamunlock section': 'https://clwo.eu/forum-7.html'
+    }
+
     var survey = {
         1: {
             'question': 'What do you want to do?',
@@ -59,7 +65,7 @@ $(function() {
                 2: {
                     'type': 'radio',
                     'dynamic': true,
-                    'route': 7,
+                    'route': 8,
                     'item': 'No'
                 }
             }
@@ -70,8 +76,8 @@ $(function() {
                 1: {
                     'type': 'text',
                     'dynamic': true,
-                    'route': 7,
-                    'placeholder': 'STEAM_0:0:11101 | [U:1:22202] | 76561197960287930',
+                    'route': 8,
+                    'placeholder': 'STEAM_0:0:11101 | [U:1:22202] | 86561198960288930',
                     'identity': 'mm-dynamic-steamid'
                 }
             }
@@ -82,30 +88,34 @@ $(function() {
                 1: {
                     'type': 'radio',
                     'dynamic': true,
-                    'route': 7,
+                    'route': 8,
                     'item': 'Teambanned from CT'
                 },
                 2: {
                     'type': 'radio',
                     'dynamic': true,
-                    'route': 7,
+                    'route': 8,
                     'item': 'Teamlocked from CT'
                 },
                 3: {
                     'type': 'radio',
                     'dynamic': true,
-                    'route': 7,
+                    'route': 8,
                     'item': 'Banned from server'
                 },
                 4: {
                     'type': 'radio',
                     'dynamic': true,
-                    'route': 7,
+                    'route': 8,
                     'item': 'Blacklisted from network'
                 }
             }
         },
         7: {
+            'question': 'Some random test question',
+            'answer': {}
+        },
+        8: {
             'question': 'End of Questionnaire.',
             'answer': {}
         },
@@ -277,15 +287,15 @@ $(function() {
                 input = item.children('input');
                 xyz = input.data('dynamic');
                 jQuery('.mm-page-' + xyz).addClass('active mm-dynamic-active').attr('data-orgin', page);
+                item.addClass('bingo');
+                buildButtons(xyz, y);
+                buttonConfig(xyz);
                 if (~final.indexOf(xyz)) {
                     console.log('final page detected1');
                     collectData();
                     jQuery('.mm-survey-bottom').slideUp();
                     jQuery('.mm-survey-results').slideDown();
                 }
-                item.addClass('bingo');
-                buildButtons(xyz, y);
-                buttonConfig(xyz);
             } else if (item.hasClass('mm-dynamic-input')) {
                 page = item.closest('.mm-survey-page').data('page');
                 jQuery('.mm-page-' + page).removeClass('pass');
@@ -495,6 +505,27 @@ $(function() {
             log[id] = data
             jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">' + (index + 1) + '</span><span class="mm-item-info">' + survey[id].question + ' - ' + data + '</span></li>');
         });
+
+        var title = ''
+        var message = ''
+        var topic = ''
+
+        if (log[1] == 'Report a player') {
+          title = `Complaint against ${log[3]}`
+          if (log[2] == 'A staff member') {
+            topic = '[Jailbreak] Staff Infractions & Complaints'
+          } else if (log[2] == 'A normal player'){
+            topic = '[Jailbreak] (un)ban/teamunban/teamunlock section'
+          }
+          message = `
+[b]Player:[/b] ${log[3]} ${log[4] == 'Yes' ? `(${log[5]})` : ``}
+[b]Date:[/b] <!-- Date of Incident -->
+[b]Reason: [/b] <!-- Explain what this person did. -->
+[b]Evidence: [/b] <!-- If you have any evidence, include it in this section. -->
+`
+        } else if (log[1] == 'Request to be unbanned') {
+
+        }
 
         console.log(log)
     }
