@@ -5,7 +5,8 @@ let forums = {
   7: '[Jailbreak] (un)ban/teamunban/teamunlock section',
   14: '[Jailbreak] Staff Infractions & Complaints',
   43: '[TTT] Unban Appeal and Ban Requests',
-  69: '[Deathrun] Unban Appeal and Ban Requests'
+  65: '[Jailbreak] Bugs / Issues / Abuse reports',
+  69: '[Deathrun] Unban Appeal and Ban Requests',
 }
 
 let survey = {
@@ -309,7 +310,7 @@ function retrieve_data() {
 function display_data(data) {
   if (data[0] == 'Report a player') report_player(data)
   if (data[0] == 'Request to be unbanned') unban_player(data)
-  $('.results-container').append(`<span>${JSON.stringify(data)}</span>`)
+  // $('.results-container').append(`<span>${JSON.stringify(data)}</span>`)
   console.log(data)
 }
 
