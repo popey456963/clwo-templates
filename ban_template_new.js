@@ -323,6 +323,7 @@ function report_player(data) {
 [b]Evidence:[/b] ${ data[7] == 'Yes' ? data[8] : `None.` }
 [b]Context:[/b] <!-- Explain situation in more detail here -->`
   post(`<h1>Click here to post your thread in <a href='${generate_url(forum, title, text)}' target='_blank'>${forums[forum]}</a>:</h1>`)
+  post(`<div class='alert alert-info'>Please ensure your post is written in correct English & is not a troll post.  This section is for serious complaints only.</p>`)
   post(`<p>Set the title to be: ${title}`)
   post(`<p class='text'>${text.split(/\r?\n/).join('<br />')}</p>`)
 }
