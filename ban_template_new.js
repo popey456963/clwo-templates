@@ -340,7 +340,7 @@ function unban_player(data) {
     if (data[60] == 'Jailbreak') forum = 7
     if (data[60] == 'Trouble in Terrorist Town') forum = 43
     if (data[60] == 'Deathrun') forum = 69
-    post(`<h1>Post the following in the href='${generate_url(forum, title, text)}' target='_blank'>${forums[forum]}</a>:</h1>`)
+    post(`<h1>Post the following in the <a href='${generate_url(forum, title, text)}' target='_blank'>${forums[forum]}</a>:</h1>`)
     post(`<p>Set the title to be: ${title}`)
     post(`<p class='text'>${text.split(/\r?\n/).join('<br />')}</p>`)
   } else if (['Teambanned from CT', 'Teamlocked from CT'].includes(data[50])) {
