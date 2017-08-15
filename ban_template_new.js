@@ -321,12 +321,10 @@ function report_player(data) {
 [b]Date:[/b] ${data[5]}
 [b]Reason:[/b] ${data[6]}
 [b]Evidence:[/b] ${ data[7] == 'Yes' ? data[8] : `None.` }
-[b]Context:[/b] <!-- Explain situation in more detail here -->
-`.split(/\r?\n/).join('<br />')
-
-  post(`<h1>Post the following in the <a href='https://clwo.eu/newthread.php?fid=${forum}' target='_blank'>${forums[forum]}</a>:</h1>`)
+[b]Context:[/b] <!-- Explain situation in more detail here -->`
+  post(`<h1>Click here to post your thread in <a href='${generate_url(forum, title, text)}' target='_blank'>${forums[forum]}</a>:</h1>`)
   post(`<p>Set the title to be: ${title}`)
-  post(`<p class='text'>${text}</p>`)
+  post(`<p class='text'>${text.split(/\r?\n/).join('<br />')}</p>`)
 }
 
 function unban_player(data) {
@@ -335,33 +333,34 @@ function unban_player(data) {
   } else if (data[50] == 'Banned from a server') {
     let forum = 0
     let title = `Unban request for ${data[61]}`
-    let text = `
-[b]Ban Reason:[/b] ${data[62]}
+    let text = `[b]Ban Reason:[/b] ${data[62]}
 [b]Date of Ban:[/b] ${data[59]}
 [b]Reason for Unban:[/b] ${data[63]}
-[b]Improvements Made:[/b] ${data[64]}
-`.split(/\r?\n/).join('<br />')
+[b]Improvements Made:[/b] ${data[64]}`
     if (data[60] == 'Jailbreak') forum = 7
     if (data[60] == 'Trouble in Terrorist Town') forum = 43
     if (data[60] == 'Deathrun') forum = 69
-    post(`<h1>Post the following in the <a href='https://clwo.eu/newthread.php?fid=${forum}' target='_blank'>${forums[forum]}</a>:</h1>`)
+    post(`<h1>Post the following in the href='${generate_url(forum, title, text)}' target='_blank'>${forums[forum]}</a>:</h1>`)
     post(`<p>Set the title to be: ${title}`)
-    post(`<p class='text'>${text}</p>`)
+    post(`<p class='text'>${text.split(/\r?\n/).join('<br />')}</p>`)
   } else if (['Teambanned from CT', 'Teamlocked from CT'].includes(data[50])) {
     let forum = 7
     let title = `${ data[50] == 'Teamlocked from CT' ? 'Unteamlock' : 'Unteamban'} Request for ${data[49]}`
-    let text = `
-${ data[50] == 'Teamlocked from CT' ? `[b]Time of Teamlock:[/b] ${data[51]}\n` : ``}[b]Reason for Unban:[/b] ${data[52]}
+    let text = `${ data[50] == 'Teamlocked from CT' ? `[b]Time of Teamlock:[/b] ${data[51]}\n` : ``}[b]Reason for Unban:[/b] ${data[52]}
 [b]Screenshot:[/b] ${data[53]}
-`.split(/\r?\n/).join('<br />')
-    post(`<h1>Post the following in the <a href='https://clwo.eu/newthread.php?fid=${forum}' target='_blank'>${forums[forum]}</a>:</h1>`)
-    post(`<p>Set the title to be: ${title}`)
-    post(`<p class='text'>${text}</p>`)
+`
+    post(`<h1>Post the following in the <a href='${generate_url(forum, title, text)}' target='_blank'>${forums[forum]}</a>:</h1>`)
+    post(`<p>Title: ${title}`)
+    post(`<p class='text'>${text.split(/\r?\n/).join('<br />')}</p>`)
   }
 }
 
 function post(data) {
   $('.results-container').append(data)
+}
+
+function generate_url(forum, title, text) {
+  return `https://clwo.eu/newthread.php?fid=${forum}&subject=${encodeURIComponent(title)}&message=${encodeURIComponent(text)}&previewpost=Preview%20Post`.replace(/'/g, '%27')
 }
 
 $(function() {
