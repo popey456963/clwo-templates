@@ -5,6 +5,7 @@ let forums = {
   7: '[Jailbreak] (un)ban/teamunban/teamunlock section',
   14: '[Jailbreak] Staff Infractions & Complaints',
   43: '[TTT] Unban Appeal and Ban Requests',
+  47: '[General] Blacklist appeals',
   65: '[Jailbreak] Bugs / Issues / Abuse reports',
   69: '[Deathrun] Unban Appeal and Ban Requests',
 }
@@ -170,6 +171,10 @@ let survey = {
       type: 'radio',
       route: 61,
       item: 'Deathrun'
+    }, {
+      type: 'radio',
+      route: 61,
+      item: 'Minirace'
     }]
   },
   61: {
@@ -341,6 +346,7 @@ function unban_player(data) {
     if (data[60] == 'Jailbreak') forum = 7
     if (data[60] == 'Trouble in Terrorist Town') forum = 43
     if (data[60] == 'Deathrun') forum = 69
+    if (data[60] == 'Minirace') forum = 47
     post(`<h1>Post the following in the <a href='${generate_url(forum, title, text)}' target='_blank'>${forums[forum]}</a>:</h1>`)
     post(`<p>Set the title to be: ${title}`)
     post(`<p class='text'>${text.split(/\r?\n/).join('<br />')}</p>`)
