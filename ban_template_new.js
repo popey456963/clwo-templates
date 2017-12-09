@@ -139,7 +139,7 @@ let survey = {
     answers: [{
       type: 'text',
       route: 53,
-      placeholder: ''
+      placeholder: 'Please go into detail & include any changes you\'ve made.'
     }]
   },
   53: {
