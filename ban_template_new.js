@@ -139,7 +139,7 @@ let survey = {
     answers: [{
       type: 'text',
       route: 53,
-      placeholder: 'Please go into detail & include any changes you\'ve made.'
+      placeholder: 'Please go into detail as to why you deserve to be unbanned from CT.'
     }]
   },
   53: {
@@ -198,7 +198,7 @@ let survey = {
     answers: [{
       type: 'text',
       route: 64,
-      placeholder: ''
+      placeholder: 'Please go into detail as to why you deserve to be unbanned.'
     }]
   },
   64: {
