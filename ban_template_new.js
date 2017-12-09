@@ -98,11 +98,19 @@ let survey = {
       placeholder: 'e.g. video of incident www.youtube.com/watch?v=example'
     }]
   },
+  48: {
+    question: 'What did you do to receive your teamban?',
+    answers: [{
+      type: 'text',
+      route: 52,
+      placeholder: ''
+    }]
+  },
   49: {
     question: 'What is your in game name?',
     answers: [{
       type: 'text',
-      route: 52,
+      route: 48,
       placeholder: 'e.g. Jack'
     }]
   },
@@ -353,7 +361,7 @@ function unban_player(data) {
   } else if (['Teambanned from CT', 'Teamlocked from CT'].includes(data[50])) {
     let forum = 7
     let title = `${ data[50] == 'Teamlocked from CT' ? 'Unteamlock' : 'Unteamban'} Request for ${data[49]}`
-    let text = `${ data[50] == 'Teamlocked from CT' ? `[b]Time of Teamlock:[/b] ${data[51]}\n` : ``}[b]Reason for Unban:[/b] ${data[52]}
+    let text = `${ data[50] == 'Teamlocked from CT' ? `[b]Time of Teamlock:[/b] ${data[51]}\n` : ``}[b]Reason for Lock:[/b] ${data[48]}\n[b]Reason for Unban:[/b] ${data[52]}
 [b]Screenshot:[/b] ${data[53]}
 `
     post(`<h1>Post the following in the <a href='${generate_url(forum, title, text)}' target='_blank'>${forums[forum]}</a>:</h1>`)
