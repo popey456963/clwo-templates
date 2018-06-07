@@ -343,7 +343,7 @@ function report_player(data) {
 
 function unban_player(data) {
   if(data[50] == 'Blacklisted from community') {
-    post(`<h1>Go to the <a href='https://clwo.eu/jailbreak/admin/view-blacklist.php' target='_blank'>list of blacklists</a> and appeal from there.`)
+    post(`<h1>Go to the <a href='https://clwo.eu/community/view-blacklist.php' target='_blank'>list of blacklists</a> and appeal from there.`)
   } else if (data[50] == 'Banned from a server') {
     let forum = 0
     let title = `Unban request for ${data[61]}`
